@@ -1,0 +1,83 @@
+@font-face {
+    font-family: "icomoon";
+    src: url("fonts/icomoon.eot?fkrwk9");
+    src: url("fonts/icomoon.eot?fkrwk9#iefix") format("embedded-opentype"),
+        url("fonts/icomoon.ttf?fkrwk9") format("truetype"), url("fonts/icomoon.woff?fkrwk9") format("woff"),
+        url("fonts/icomoon.svg?fkrwk9#icomoon") format("svg");
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+[class$="-icon"],
+[class*="-icon"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: "icomoon" !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.pencil-icon:before {
+    content: "\e911";
+}
+
+.small-check-icon:before {
+    content: "\e910";
+}
+
+.gear-icon:before {
+    content: "\e900";
+}
+.dashboard-icon:before {
+    content: "\e901";
+}
+.arrow-down-icon:before {
+    content: "\e902";
+}
+.browser-abandons-icon:before {
+    content: "\e903";
+}
+.campaigns-icon:before {
+    content: "\e904";
+}
+.cart-abandons-icon:before {
+    content: "\e905";
+}
+.check-icon:before {
+    content: "\e906";
+}
+.cross-icon:before {
+    content: "\e907";
+}
+.exclaim-icon:before {
+    content: "\e908";
+}
+.inbox-icon:before {
+    content: "\e909";
+}
+.plus-icon:before {
+    content: "\e90a";
+}
+.plus-solid-icon:before {
+    content: "\e90b";
+}
+.question-icon:before {
+    content: "\e90c";
+}
+.shipping-icon:before {
+    content: "\e90d";
+}
+.stats-icon:before {
+    content: "\e90e";
+}
+.winback-icon:before {
+    content: "\e90f";
+}

@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+$colors: (
+    primary: #225E66,
+    secondary: #FAAE4E,
+    green: #72CB8B,
+    red: #CB2C2C,
+    grey: #707070,
+    lightGrey: #B4B4B4,
+    darkest: #0D1C19,
+    light: #ffffff,
+    body-bg: #F6F8FC,
+    ele-bg: #E9EEF4,
+    dark: #737C89,
+    unEmph:#B4BEC9,
+);
+
+@function color ($color-name) {
+    @return map-get($colors, $color-name);
+}
+
+@mixin centralizeFlex ($x: 0, $y: 0) {
+    display: flex;
+
+    @if $x != 0 {
+        justify-content: center;
+    }
+
+    @if $y != 0 {
+        align-items: center;
+    }
+}
+
+@mixin flexBox ($wrap: "", $x: "", $y: "") {
+    display: flex;
+
+    @if $wrap != "" {
+        flex-wrap: $wrap;
+    }
+
+    @if $x != "" {
+        justify-content: $x;
+    }
+
+    @if $y != "" {
+        align-items: $y;
+    }
+}
+
+$card-shadow: 2px 2px 4px rgba(0, 0, 0, 0.04);
+$archivo: 'Archivo', sans-serif;
+$border-radius: 12px;

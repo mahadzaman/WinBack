@@ -1,0 +1,542 @@
+@import './scssVars/variables';
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: $archivo;
+}
+
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: color(body-bg);
+    font-size: 14px;
+    color: color(dark);
+
+    & > * {
+        flex-basis: 100%;
+        width: 100%;
+    }
+}
+
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: color(secondary);
+}
+
+ul,
+ol,
+dl {
+    padding-left: 2rem;
+}
+
+* img,
+img {
+    max-width: 100%;
+}
+
+.main-side-bar {
+    padding: 30px 50px;
+    position: fixed !important;
+    width: 100%;
+    height: 100%;
+    max-width: 310px;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    background: color(light);
+    overflow: auto;
+    border-right: 2px solid color(ele-bg);
+
+    .logo-holder {
+        text-align: center;
+        margin-bottom: 38px;
+    }
+
+    .lifetime-earnings {
+        text-align: center;
+    }
+
+    .main-navigation {
+        margin-top: 45px;
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+
+            .nav-item{
+                margin-bottom: 50px;
+
+                &:last-of-type{
+                    margin-bottom: 0;
+                }
+
+                .nav-link {
+                    @include centralizeFlex ($x: 0, $y: 1);
+                    color: color(dark);
+
+                    span.link-text {
+                        margin-left: 25px;
+                        visibility: visible;
+                        position: relative;
+
+                        &:after {
+                            content: attr(data-title);
+                            font-weight: bold;
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                            width: max-content;
+                            visibility: hidden;
+                        }
+                    }
+                }
+    
+                i[class*="-icon"] {
+                    border-radius: 50%;
+                    @include centralizeFlex ($x: 1, $y: 1);
+                    height: 30px;
+                    width: 30px;
+                    background: #F6F8FC;
+                    color:#B4BEC9;
+                    background-blend-mode: overlay, normal;
+                }
+    
+                &.active,
+                &:hover,
+                &:focus {
+                    i[class*="-icon"] {
+                        background: linear-gradient(180deg, #99E3C4 0%, rgba(255, 255, 255, 0) 100%), #99E3C4;
+                        color: color(light);
+                    }
+
+                    .nav-link {
+                        color: color(darkest);
+                        position: relative;
+
+                        span.link-text {
+                            position: relative;
+
+                            &:after {
+                                visibility: visible;
+                                opacity: 1;
+                            }
+
+                            span {
+                                visibility: hidden;
+                                opacity: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .un-emph-links {
+            border-top: 2px solid color(ele-bg);
+            padding-top: 30px;
+            padding-left: 30px;
+            padding-bottom: 50px;
+            margin-top: 50px;
+
+            li:not(:last-of-type) {
+                margin-bottom: 10px;
+            }
+        }
+    }
+}
+
+section.right-content-area {
+    padding-left: 310px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    
+    .content-container {
+        padding: 50px;
+
+        .topbar-content {
+            @include flexBox($wrap: wrap, $x: space-between);
+            margin-bottom: 38px;
+
+            .flex-box {
+                @include flexBox($wrap: wrap, $x: flex-end);
+                margin-left: 20px;
+            }
+
+            .breadcrumb-container {
+                @include centralizeFlex($x: 0, $y: 1);
+
+                .app-title,
+                .page-title,
+                span {
+                    font-size: 30px;
+                    font-weight: bold;
+                    margin-bottom: 0;
+                }
+
+                .page-title,
+                span {
+                    color: color(primary);
+                    margin-left: 15px;
+                }
+            }
+
+            .plan-info-bar,
+            .bonus-bar {
+                padding: 15px;
+                @include centralizeFlex($y: 1);
+            }
+
+            .bonus-bar {
+                margin-left: 20px;
+                font-size: 12px;
+                @include centralizeFlex ($y: 1);
+
+                .label {
+                    font-weight: 600;
+                }
+
+                a {
+                    @include centralizeFlex ($y: 1);
+                    font-size: 13px;
+                    color: color(unEmph);
+                    margin-right: 8px;
+                }
+            }
+
+            .plan-info-bar {
+                font-size: 12px;
+
+                a {
+                    color: color(dark);
+                    padding: 0 5px;
+                }
+
+                .label {
+                    font-weight: 600;
+                }
+
+                .value,
+                .sep {
+                    font-weight: 500;
+                }
+
+                .sep {
+                    margin-left: 4px;
+                    margin-right: 4px;
+                }
+
+                .value {
+                    margin-left: 4px;
+                }
+
+                .fillable-bar {
+                    position: relative;
+                    width: 90px;
+                    height: 8px;
+                    margin-left: 6px;
+
+                    .main-bar,
+                    .filled-bar {
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        width: 100%;
+                        height: 100%;
+                    }
+
+                    .main-bar {
+                        background: color(ele-bg);
+                    }
+
+                    .filled-bar {
+                        background: linear-gradient(90.54deg, rgba(153, 227, 196, 0) 20.77%, #99E3C4 81.4%), #99E3C4;
+                        background-blend-mode: overlay, normal;
+                    }
+                }
+            }
+        }
+
+        .content-card {
+            background: color(light);
+            border-radius: $border-radius;
+
+            .content-card-footer {
+                background: color(ele-bg);
+                padding: 30px 56px;
+                border-bottom-right-radius: $border-radius;
+                border-bottom-left-radius: $border-radius;
+            }
+        }
+
+        .setting-row {
+            display: flex;
+            
+            &:not(:last-of-type) {
+                margin-bottom: 53px;
+            }
+            
+            .setting-info {
+                margin-left: 25px;
+
+                .settings-title {
+                    font-size: 18px;
+                    font-weight: 500;
+                }
+
+                .setting-description {
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: color(dark);
+                    margin-bottom: 0;
+                    margin-top: 10px;
+                }
+            }
+
+            &.checked {
+                .settings-title {
+                    color: color(darkest);
+                }
+            }
+        }
+
+        .settings-wrapper {
+            padding: 55px;
+        }
+    }
+    
+    .dashboard-main-card {
+
+        .main-chart-wrapper {
+            .chart-top {
+                padding: 40px 34px;
+                @include flexBox ($y: center, $wrap: wrap);
+
+                .indicator {
+                    background: color(body-bg);
+                    height: 22px;
+                    width: 22px;
+                    border-radius: 5px;
+
+                    &.dark .revenue-line {
+                        stroke: color(primary);
+                    }
+
+                    &.green .revenue-line {
+                        stroke: color(green);
+                    }
+                }
+
+                .revenue-summary {
+                    @include centralizeFlex ($y: 1);
+                }
+
+                .revenue-figure {
+                    font-size: 38px;
+                    font-weight: 600;
+                    color: color(darkest);
+                    margin-left: 16px;
+                }
+
+                .label {
+                    font-size: 18px;
+                    font-weight: 600;
+                    color: color(darkest);
+                    margin-left: 5px;
+                }
+
+                .rev-pcent {
+                    font-size: 18px;
+                    font-weight: 700;
+                    color: color(green);
+                    margin-left: 9px;
+                }
+            }
+        }
+    }
+
+    footer {
+        margin-top: auto;
+        padding: 12px 80px;
+
+        
+
+        a {
+            color: color(unEmph);
+
+            &:nth-of-type(2) {
+                margin-left: 44px;
+                margin-right: 57px;
+            }
+
+            &:hover {
+                color: color(unEmph)
+            }
+        }
+    }
+}
+
+// Generic Elements to be used across the app
+
+.toggle-wrapper {
+    input[type="checkbox"] {
+        appearance: none;
+        width: 50px;
+        height: 24px;
+        border-radius: 30px;
+        display: inline-block;
+        background: color(ele-bg);
+        position: relative;
+        cursor: pointer;
+
+        &:before,
+        &:after {
+            border-radius: 50%;
+            font-size: 4px;
+            width: 18px;
+            height: 18px;
+            background: color(light);
+            font-family: "icomoon";
+            font-size: 6px;
+            @include centralizeFlex($x: 1, $y: 1);
+            color: color(light);
+            position: absolute;
+            right: calc(100% - 21px);
+            top: 3px;
+            transition: right 0.175s ease-in-out, visibility 0.175s ease-in-out, opacity 0.175s ease-in-out,  background 0.175s ease-in-out;
+        }
+
+        &:after {
+            content: "\e910";
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        &:before {
+            content: "\e907";
+            visibility: visible;
+            opacity: 1;
+            background: color(light);
+            color: color(ele-bg);
+        }
+
+        &:checked {
+            &:after {
+                visibility: visible;
+                opacity: 1;
+                background: color(primary);
+            }
+
+            &:before {
+                visibility: hidden;
+                opacity: 0;
+            }
+
+            &:before,
+            &:after {
+                right: 3px;
+            }
+        }
+    }
+}
+
+// ----------------Generic Classes
+
+*[class*="un-emph"] {
+    color: color(unEmph);
+}
+
+.card-shadow {
+    box-shadow: $card-shadow;
+    background: color(light);
+    border-radius: $border-radius;
+}
+
+// ---Text color and Background Classess
+
+.primary-bg {
+    background: color(primary);
+}
+
+.secondary-bg {
+    background: color(secondary);
+}
+
+.red-bg {
+    background: color(red);
+}
+
+.green-bg {
+    background: color(green);
+}
+
+.primary-color {
+    color: color(primary);
+}
+
+.light-color {
+    color: color(light);
+}
+
+.dark-color {
+    color: color(dark);
+}
+
+.darkest-color {
+    color: color(darkest);
+}
+
+// ---Font style manipulation Classes
+
+.bold {
+    font-weight: bold;
+}
+
+.x-bold {
+    font-weight: 700;
+}
+
+// ---Buttons styling
+
+.btn {
+    padding: 11px 51px;
+    border-radius: 10px;
+}
+
+.light-btn {
+    background: color(light);
+    color: color(dark);
+}
+
+// Generic Flex settings classes
+
+.flex-box {
+    @include flexBox ($wrap: wrap)
+}
+
+.align-center {
+    @include centralizeFlex ($y: 1)
+}
+
+.just-end {
+    @include flexBox ($wrap: wrap, $x: flex-end)
+}
+
+// Spacings margins and paddings
+
+.mar-l-50 {
+    margin-left: 50px;
+}
